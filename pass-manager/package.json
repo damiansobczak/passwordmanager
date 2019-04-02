@@ -22,6 +22,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "firebase": "^5.9.2",
     "node-sass": "^4.11.0",
     "react-dom": "^16.8.5",
     "react-router-dom": "^5.0.0"

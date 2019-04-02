@@ -10,10 +10,10 @@ class Login extends Component {
           <div className="card-title">Podaj swoje dane</div>
           <div className="row">
             <div className="col s12">
-              <input placeholder="imie@email.com" id="email" type="text" class="validate" />
+              <input placeholder="imie@email.com" id="email" type="text" className="validate" />
             </div>
             <div className="col s12">
-              <input placeholder="******" id="email" type="text" class="validate" />
+              <input placeholder="******" id="email" type="text" className="validate" />
             </div>
           </div>
         </div>

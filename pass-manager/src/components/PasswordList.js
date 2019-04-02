@@ -7,7 +7,9 @@ class PasswordList extends React.Component {
       <div className="card">
         <div className="card-content">
           <div className="card-title">Twoje hasła</div>
-          <PasswordItem />
+          {this.props.passwords.map((password, index) => (
+            <PasswordItem name={password.name} hash={password.password} date={password.date} key={index} />
+          ))}
         </div>
       </div>
     );
