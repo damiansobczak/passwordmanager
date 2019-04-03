@@ -20,20 +20,26 @@ class App extends Component {
   };
 
   login = () => {
-    auth.signInWithPopup(provider).then(result => {
-      const user = result.user;
-      this.setState({ user });
-    });
+    auth
+      .signInWithPopup(provider)
+      .then(result => {
+        const user = result.user;
+        this.setState({ user });
+      })
+      .then(() => {
+        if (this.state.passwords.length < 1) {
+          this.getDataFromFirebase();
+        }
+      });
   };
 
   logout = () => {
     auth.signOut().then(() => {
       this.setState({ user: null });
     });
-    this.forceUpdate();
   };
 
-  componentDidMount() {
+  getDataFromFirebase = () => {
     const itemsRef = firebase.database().ref("items");
     itemsRef.on("value", snapshot => {
       let items = snapshot.val();
@@ -48,14 +54,19 @@ class App extends Component {
       this.setState({
         passwords: newState
       });
-      this.forceUpdate();
     });
+  };
 
+  componentDidMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ user });
       }
     });
+
+    if (this.state.user) {
+      this.getDataFromFirebase();
+    }
   }
 
   render() {

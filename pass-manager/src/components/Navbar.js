@@ -18,7 +18,7 @@ class Navbar extends React.Component {
             {this.props.user ? (
               <li className="nav-cart">
                 <a href="#" onClick={this.props.logout}>
-                  Wyloguj
+                  {this.props.user.displayName} | Wyloguj
                 </a>
               </li>
             ) : (
