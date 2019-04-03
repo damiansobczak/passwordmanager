@@ -1,26 +1,25 @@
 import React, { Component } from "react";
 import "./Login.scss";
-import { Link } from "react-router-dom";
 
 class Login extends Component {
+  login = e => {
+    e.preventDefault();
+    this.props.login();
+  };
   render() {
     return (
-      <div className="card">
-        <div className="card-content">
-          <div className="card-title">Podaj swoje dane</div>
-          <div className="row">
-            <div className="col s12">
-              <input placeholder="imie@email.com" id="email" type="text" className="validate" />
-            </div>
-            <div className="col s12">
-              <input placeholder="******" id="email" type="text" className="validate" />
+      <div className="container">
+        <div className="row">
+          <div className="col s8 push-s2 mt-5">
+            <div className="card">
+              <div className="card-content center-align">
+                <div className="card-title center-align">Zaloguj się przy pomocy konta Google</div>
+                <button onClick={this.login} className="blue accent-4 btn">
+                  Zaloguj
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="card-action">
-          <Link to={`/passwords`} className="blue-text">
-            Zaloguj
-          </Link>
         </div>
       </div>
     );

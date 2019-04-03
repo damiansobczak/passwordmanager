@@ -1,8 +1,12 @@
 import React from "react";
 import "./Navbar";
-import { Link } from "react-router-dom";
 
 class Navbar extends React.Component {
+  logout = e => {
+    e.preventDefault();
+    this.props.logout();
+  };
+
   render() {
     return (
       <nav className="blue accent-4">
@@ -11,16 +15,15 @@ class Navbar extends React.Component {
             Menadżer haseł
           </a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li>
-              <Link to={`/passwords`} className="nav-cart">
-                Hasła
-              </Link>
-            </li>
-            <li>
-              <Link to={`/`} className="nav-cart">
-                Wyloguj
-              </Link>
-            </li>
+            {this.props.user ? (
+              <li className="nav-cart">
+                <a href="#" onClick={this.props.logout}>
+                  Wyloguj
+                </a>
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
       </nav>
