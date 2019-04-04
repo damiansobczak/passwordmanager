@@ -8,7 +8,12 @@ import firebase, { auth, provider } from "./firebase";
 class App extends Component {
   state = {
     passwords: [],
-    user: null
+    user: null,
+    password: ""
+  };
+
+  testPassword = password => {
+    this.setState({ password });
   };
 
   addPassword = password => {
@@ -16,7 +21,7 @@ class App extends Component {
     itemsRef.push(password);
     const passwordsTmp = this.state.passwords;
     passwordsTmp.push(password);
-    this.setState({ passwords: passwordsTmp });
+    this.setState({ passwords: passwordsTmp, password: "" });
   };
 
   login = () => {
@@ -64,9 +69,7 @@ class App extends Component {
       }
     });
 
-    if (this.state.user) {
-      this.getDataFromFirebase();
-    }
+    this.getDataFromFirebase();
   }
 
   render() {
@@ -77,7 +80,7 @@ class App extends Component {
           <div className="container">
             <div className="row">
               <div className="col s8 push-s2 mt-5">
-                <PasswordForm submitPassword={this.addPassword} />
+                <PasswordForm submitPassword={this.addPassword} password={this.state.password} testPassword={this.testPassword} />
               </div>
             </div>
             <div className="row mb-5">

@@ -1,6 +1,7 @@
 import React from "react";
 import "./PasswordForm.scss";
 import { getCurrentDate } from "../helpers";
+import PasswordChecker from "./PasswordChecker";
 
 class PasswordForm extends React.Component {
   passwordNameInput = React.createRef();
@@ -32,13 +33,14 @@ class PasswordForm extends React.Component {
                 <label htmlFor="password-name">Strona</label>
               </div>
               <div className="input-field col s5">
-                <input type="password" className="validate" id="password-hash" ref={this.passwordHashInput} />
+                <input type="password" className="validate" id="password-hash" ref={this.passwordHashInput} onChange={e => this.props.testPassword(e.target.value)} />
                 <label htmlFor="password-hash">Hasło</label>
               </div>
               <div className="input-field col s2">
                 <button className="blue accent-4 accent-bluewaves-effect waves-light btn password-copy">Zapisz</button>
               </div>
             </div>
+            <PasswordChecker password={this.props.password} />
           </form>
         </div>
       </div>
