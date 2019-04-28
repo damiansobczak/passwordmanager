@@ -1,5 +1,5 @@
 import React from "react";
-import PasswordItem from "./PasswordItem";
+import PasswordItem from "../PasswordItem/PasswordItem";
 
 class PasswordList extends React.Component {
   render() {

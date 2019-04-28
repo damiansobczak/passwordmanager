@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Navbar from "./Navbar";
-import PasswordList from "./PasswordList";
-import PasswordForm from "./PasswordForm";
-import Login from "./Login";
+import Navbar from "./Navbar/Navbar";
+import PasswordList from "./PasswordList/PasswordList";
+import PasswordForm from "./PasswordForm/PasswordForm";
+import Login from "./Login/Login";
 import firebase, { auth, provider } from "./firebase";
 
 class App extends Component {
@@ -17,11 +17,11 @@ class App extends Component {
   };
 
   addPassword = password => {
-    const itemsRef = firebase.database().ref("items");
-    itemsRef.push(password);
-    const passwordsTmp = this.state.passwords;
-    passwordsTmp.push(password);
-    this.setState({ passwords: passwordsTmp, password: "" });
+    const firebaseReference = firebase.database().ref("items");
+    firebaseReference.push(password);
+    const passwords = this.state.passwords;
+    passwords.push(password);
+    this.setState({ passwords, password: "" });
   };
 
   login = () => {
@@ -32,9 +32,12 @@ class App extends Component {
         this.setState({ user });
       })
       .then(() => {
-        if (this.state.passwords.length < 1) {
+        if (this.state.passwords.length < 1 && this.state.user !== null) {
           this.getDataFromFirebase();
         }
+      })
+      .catch(reason => {
+        new Error("Ups...Something went wrong while login" + reason);
       });
   };
 
@@ -45,19 +48,19 @@ class App extends Component {
   };
 
   getDataFromFirebase = () => {
-    const itemsRef = firebase.database().ref("items");
-    itemsRef.on("value", snapshot => {
+    const firebaseReference = firebase.database().ref("items");
+    firebaseReference.on("value", snapshot => {
       let items = snapshot.val();
-      let newState = [];
+      let passwordsFromDb = [];
       for (let item in items) {
-        newState.push({
+        passwordsFromDb.push({
           name: items[item].name,
           password: items[item].password,
           date: items[item].date
         });
       }
       this.setState({
-        passwords: newState
+        passwords: passwordsFromDb
       });
     });
   };
@@ -66,10 +69,9 @@ class App extends Component {
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ user });
+        this.getDataFromFirebase();
       }
     });
-
-    this.getDataFromFirebase();
   }
 
   render() {
@@ -79,12 +81,12 @@ class App extends Component {
         {this.state.user ? (
           <div className="container">
             <div className="row">
-              <div className="col s8 push-s2 mt-5">
+              <div className="col s12 xl8 push-xl2 mt-5">
                 <PasswordForm submitPassword={this.addPassword} password={this.state.password} testPassword={this.testPassword} />
               </div>
             </div>
             <div className="row mb-5">
-              <div className="col s8 push-s2">
+              <div className="col s12 xl8 push-xl2">
                 <PasswordList passwords={this.state.passwords} />
               </div>
             </div>

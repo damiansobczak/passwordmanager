@@ -1,5 +1,5 @@
 import React from "react";
-import "./Navbar";
+import "./Navbar.scss";
 
 class Navbar extends React.Component {
   logout = e => {
@@ -17,7 +17,7 @@ class Navbar extends React.Component {
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             {this.props.user ? (
               <li className="nav-cart">
-                <a href="#" onClick={this.props.logout}>
+                <a href="/" onClick={this.props.logout}>
                   {this.props.user.displayName} | Wyloguj
                 </a>
               </li>
