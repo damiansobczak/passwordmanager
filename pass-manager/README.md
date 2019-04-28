@@ -2,7 +2,7 @@
 
 Password manager based on React.js, Firebase Realtime Database, Firebase Authentication and MaterializeCSS. Add and manage your passwords, quickly copy to clipboard without revealing.
 
-![Password Manager](rpublic/assets/app.jpg?raw=true "Title")
+![Password Manager](public/assets/app.jpg?raw=true "Title")
 
 ---
 
