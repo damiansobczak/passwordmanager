@@ -1,5 +1,6 @@
 import React from "react";
 import "./Navbar.scss";
+import PropTypes from "prop-types";
 
 class Navbar extends React.Component {
   logout = e => {
@@ -30,5 +31,13 @@ class Navbar extends React.Component {
     );
   }
 }
+
+Navbar.propTypes = {
+  user: PropTypes.shape({
+    displayName: PropTypes.string
+  }),
+  login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired
+};
 
 export default Navbar;

@@ -2,6 +2,7 @@ import React from "react";
 import "./PasswordForm.scss";
 import { getCurrentDate } from "../../helpers";
 import PasswordChecker from "../PasswordChecker/PasswordChecker";
+import PropTypes from "prop-types";
 
 class PasswordForm extends React.Component {
   passwordNameInput = React.createRef();
@@ -47,5 +48,11 @@ class PasswordForm extends React.Component {
     );
   }
 }
+
+PasswordForm.propTypes = {
+  submitPassword: PropTypes.func.isRequired,
+  password: PropTypes.string,
+  testPassword: PropTypes.func
+};
 
 export default PasswordForm;

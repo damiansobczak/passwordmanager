@@ -1,5 +1,6 @@
 import React from "react";
 import "./PasswordItem.scss";
+import PropTypes from "prop-types";
 
 class PasswordItem extends React.Component {
   passwordHash = React.createRef();
@@ -45,5 +46,11 @@ class PasswordItem extends React.Component {
     );
   }
 }
+
+PasswordItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  hash: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired
+};
 
 export default PasswordItem;

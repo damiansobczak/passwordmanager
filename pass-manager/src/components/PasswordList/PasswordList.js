@@ -1,5 +1,6 @@
 import React from "react";
 import PasswordItem from "../PasswordItem/PasswordItem";
+import PropTypes from "prop-types";
 
 class PasswordList extends React.Component {
   render() {
@@ -16,4 +17,13 @@ class PasswordList extends React.Component {
   }
 }
 
+PasswordList.propTypes = {
+  passwords: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      password: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired
+    })
+  )
+};
 export default PasswordList;

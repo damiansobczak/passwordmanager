@@ -1,6 +1,7 @@
 import React from "react";
 import zxcvbn from "zxcvbn";
 import "./PasswordChecker.scss";
+import PropTypes from "prop-types";
 
 class PasswordChecker extends React.Component {
   createPasswordLabel = result => {
@@ -34,5 +35,9 @@ class PasswordChecker extends React.Component {
     );
   }
 }
+
+PasswordChecker.propTypes = {
+  password: PropTypes.string
+};
 
 export default PasswordChecker;

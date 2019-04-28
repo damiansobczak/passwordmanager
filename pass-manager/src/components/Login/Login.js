@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Login.scss";
+import PropTypes from "prop-types";
 
 class Login extends Component {
   login = e => {
@@ -25,5 +26,9 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired
+};
 
 export default Login;
