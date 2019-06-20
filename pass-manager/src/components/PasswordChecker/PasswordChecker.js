@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import zxcvbn from "zxcvbn";
 import "./PasswordChecker.scss";
 import PropTypes from "prop-types";
 
-class PasswordChecker extends React.Component {
+class PasswordChecker extends Component {
   createPasswordLabel = result => {
     switch (result.score) {
       case 0:

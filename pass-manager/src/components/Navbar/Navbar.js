@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Navbar.scss";
 import PropTypes from "prop-types";
 
-class Navbar extends React.Component {
+class Navbar extends Component {
   logout = e => {
     e.preventDefault();
     this.props.logout();

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import PasswordItem from "../PasswordItem/PasswordItem";
 import PropTypes from "prop-types";
 
-class PasswordList extends React.Component {
+class PasswordList extends Component {
   render() {
     return (
       <div className="card">

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import "./PasswordForm.scss";
 import { getCurrentDate } from "../../helpers";
 import PasswordChecker from "../PasswordChecker/PasswordChecker";
 import PropTypes from "prop-types";
 
-class PasswordForm extends React.Component {
+class PasswordForm extends Component {
   passwordNameInput = React.createRef();
   passwordHashInput = React.createRef();
   form = React.createRef();

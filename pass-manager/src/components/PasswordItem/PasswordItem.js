@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "./PasswordItem.scss";
 import PropTypes from "prop-types";
 
-class PasswordItem extends React.Component {
+class PasswordItem extends Component {
   passwordHash = React.createRef();
 
   showPassword = () => {
