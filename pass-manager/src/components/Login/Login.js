@@ -3,8 +3,7 @@ import "./Login.scss";
 import PropTypes from "prop-types";
 
 class Login extends Component {
-  login = e => {
-    e.preventDefault();
+  login = () => {
     this.props.login();
   };
   render() {
