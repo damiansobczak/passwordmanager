@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> renders correctly 1`] = `
+<nav
+  className="blue accent-4"
+>
+  <div
+    className="nav-wrapper container"
+  >
+    <a
+      className="brand-logo"
+      href="/"
+    >
+      Menadżer haseł
+    </a>
+    <ul
+      className="right hide-on-med-and-down"
+      id="nav-mobile"
+    >
+      <li
+        className="nav-cart"
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          Damian Sobczak
+           | Wyloguj
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;
