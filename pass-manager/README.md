@@ -9,4 +9,4 @@ Password manager based on React.js, Firebase Realtime Database, Firebase Authent
 Todos:
 
 - ~~Add propTypes for typechecking~~,
-- add unit tests
+- ~~add unit tests~~
